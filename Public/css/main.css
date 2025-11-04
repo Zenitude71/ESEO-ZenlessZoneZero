@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #111;
+    color: #eee;
+}
+h1 {
+    text-align: center;
+    color: #00bfff;
+    margin-top: 2rem;
+}
+header, footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #222;
+}
