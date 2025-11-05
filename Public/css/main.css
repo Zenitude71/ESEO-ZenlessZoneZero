@@ -11,14 +11,16 @@ body {
     margin: 0;
     background: #FFAF2A;
     color: #eee;
+    letter-spacing: 3px;
 }
 h1 {
     text-align: left;
+    font-size: 24px;
     color: #A6EC34;
     margin-top: 2rem;
     margin-left: 12px;
     text-shadow: 4px 0 black, -4px 0 black, 0 4px black, 0 -4px black,
-                 3px 3px black, -3px -3px black, 3px -3px black, -3px 3px black;
+    4px 4px black, -4px -4px black, 4px -4px black, -4px 4px black;
 }
 
 .personnage-grid {
@@ -60,7 +62,9 @@ h1 {
 }
 
 .header-title {
-    margin-left: 36px;
+    margin-left: 40px;
     font-size: 2rem;
     color: #fff;
+    text-shadow: 4px 0 black, -4px 0 black, 0 4px black, 0 -4px black,
+    4px 4px black, -4px -4px black, 4px -4px black, -4px 4px black;
 }
