@@ -11,22 +11,21 @@ class MainController
 
     public function __construct()
     {
-        $this->templates = new Engine('Views');
+        // Chemin vers ton dossier de vues
+        $this->templates = new Engine(__DIR__ . '/../Views');
     }
 
     public function index(): void
     {
-        echo $this->templates->render('home', [
-            'gameName' => 'Zenless Zone Zero'
-        ]);
-
         $dao = new PersonnageDAO();
 
         $listPersonnage = $dao->getAll();
         $first = $dao->getByID('5f8b9a1c2d3e4');
         $other = $dao->getByID('5f8b9a1c2d3e4');
 
-        $this->render('home', [
+        // On passe tout à la vue 'home'
+        echo $this->templates->render('home', [
+            'gameName' => 'Zenless Zone Zero',
             'listPersonnage' => $listPersonnage,
             'first' => $first,
             'other' => $other
