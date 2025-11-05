@@ -6,20 +6,25 @@
     <div class="personnage-grid">
         <?php foreach ($listPersonnage as $perso): ?>
             <div class="personnage-card">
-                <img src="<?= htmlspecialchars($perso->getUrlImg()) ?>"
-                     alt="<?= htmlspecialchars($perso->getName()) ?>"
-                     class="personnage-img">
 
-                <h2><?= htmlspecialchars($perso->getName()) ?></h2>
+                <!-- Image carrée -->
+                <div class="personnage-img-wrapper">
+                    <img src="<?= htmlspecialchars($perso->getUrlImg()) ?>"
+                         alt="<?= htmlspecialchars($perso->getName()) ?>"
+                         class="personnage-img">
+                </div>
 
-                <ul>
-                    <li><strong>Élément :</strong> <?= htmlspecialchars($perso->getElement()) ?></li>
-                    <li><strong>Classe :</strong> <?= htmlspecialchars($perso->getUnitclass()) ?></li>
-                    <li><strong>Rareté :</strong> <?= htmlspecialchars($perso->getRarity()) ?>★</li>
-                    <?php if ($perso->getOrigin()): ?>
-                        <li><strong>Origine :</strong> <?= htmlspecialchars($perso->getOrigin()) ?></li>
-                    <?php endif; ?>
-                </ul>
+                <!-- Nom -->
+                <h2 class="personnage-name"><?= htmlspecialchars($perso->getName()) ?></h2>
+
+                <!-- Rareté -->
+                <p class="personnage-rarity">
+                    <?php
+                    $rarityMap = [5 => 'S', 4 => 'A'];
+                    echo $rarityMap[$perso->getRarity()] ?? $perso->getRarity();
+                    ?>
+                </p>
+
             </div>
         <?php endforeach; ?>
     </div>
