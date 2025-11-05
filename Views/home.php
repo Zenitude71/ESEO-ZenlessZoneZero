@@ -5,6 +5,28 @@
 <?php if (!empty($listPersonnage)): ?>
     <div class="personnage-grid">
         <?php foreach ($listPersonnage as $perso): ?>
+
+            <?php
+            // mapping des éléments en classes CSS
+            $elementClassMap = [
+                    'Electric' => 'attribute-electric',
+                    'Ether' => 'attribute-ether',
+                    'Fire' => 'attribute-fire',
+                    'Ice' => 'attribute-ice',
+                    'Physical' => 'attribute-physical',
+                    'Wind' => 'attribute-wind',
+                    'Other' => 'attribute-other',
+                    'Fairy' => 'attribute-fairy',
+                    'Hacked' => 'attribute-hacked',
+            ];
+
+            $elementClass = $elementClassMap[$perso->getElement()] ?? '';
+
+            // mapping rareté
+            $rarityMap = [5 => 'S', 4 => 'A'];
+            $rank = $rarityMap[$perso->getRarity()] ?? $perso->getRarity();
+            ?>
+
             <div class="personnage-card">
 
                 <!-- Image carrée -->
@@ -14,16 +36,10 @@
                          class="personnage-img">
                 </div>
 
-                <!-- Nom -->
-                <h2 class="personnage-name"><?= htmlspecialchars($perso->getName()) ?></h2>
-
-                <!-- Rareté -->
-                <p class="personnage-rarity">
-                    <?php
-                    $rarityMap = [5 => 'S', 4 => 'A'];
-                    echo $rarityMap[$perso->getRarity()] ?? $perso->getRarity();
-                    ?>
-                </p>
+                <!-- Nom + Rank avec couleur selon élément -->
+                <h2 class="personnage-name <?= $elementClass ?>">
+                    <?= htmlspecialchars($perso->getName()) ?> (<?= $rank ?>)
+                </h2>
 
             </div>
         <?php endforeach; ?>
