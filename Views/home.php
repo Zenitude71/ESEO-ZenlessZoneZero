@@ -7,27 +7,26 @@
         <?php foreach ($listPersonnage as $perso): ?>
 
             <?php
-            // mapping des éléments en classes CSS
+            // Mapping des éléments en classes CSS pour le background
             $elementClassMap = [
-                    'Electric' => 'attribute-electric',
-                    'Ether' => 'attribute-ether',
-                    'Fire' => 'attribute-fire',
-                    'Ice' => 'attribute-ice',
-                    'Physical' => 'attribute-physical',
-                    'Wind' => 'attribute-wind',
-                    'Other' => 'attribute-other',
-                    'Fairy' => 'attribute-fairy',
-                    'Hacked' => 'attribute-hacked',
+                    'Electric' => 'bg-electric',
+                    'Ether' => 'bg-ether',
+                    'Fire' => 'bg-fire',
+                    'Ice' => 'bg-ice',
+                    'Physical' => 'bg-physical',
+                    'Wind' => 'bg-wind',
+                    'Other' => 'bg-other',
+                    'Fairy' => 'bg-fairy',
+                    'Hacked' => 'bg-hacked',
             ];
-
             $elementClass = $elementClassMap[$perso->getElement()] ?? '';
 
-            // mapping rareté
+            // Mapping rareté
             $rarityMap = [5 => 'S', 4 => 'A'];
             $rank = $rarityMap[$perso->getRarity()] ?? $perso->getRarity();
             ?>
 
-            <div class="personnage-card">
+            <div class="personnage-card <?= $elementClass ?>">
 
                 <!-- Image carrée -->
                 <div class="personnage-img-wrapper">
@@ -36,10 +35,11 @@
                          class="personnage-img">
                 </div>
 
-                <!-- Nom + Rank avec couleur selon élément -->
-                <h2 class="personnage-name <?= $elementClass ?>">
-                    <?= htmlspecialchars($perso->getName()) ?> (<?= $rank ?>)
-                </h2>
+                <!-- Nom + Rank -->
+                <div class="personnage-name">
+                    <?= htmlspecialchars($perso->getName()) ?>
+                </div>
+                <div class="personnage-rank">(<?= $rank ?>)</div>
 
             </div>
         <?php endforeach; ?>

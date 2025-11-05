@@ -9,7 +9,7 @@
 body {
     font-family: ZenlessFont, sans-serif;
     margin: 0;
-    background: #FFAF2A;
+    background: #333333;
     color: #eee;
     letter-spacing: 3px;
 }
@@ -72,14 +72,14 @@ h1 {
 
 /* CARTE DES PERSONNAGES */
 
-/* Couleurs par Attribute / Element */
-.attribute-electric { color: #33B6FE; }
-.attribute-ether { color: #FE427E; }
-.attribute-fire { color: #FF5623; }
-.attribute-ice { color: #1DAFAD; }
-.attribute-physical { color: #EDCC2C; }
-.attribute-wind { color: #0AC272; }
-.attribute-other { color: #4BEEA7; }
+/* Couleurs par Attribute / Element pour le fond */
+.bg-electric { background-color: #33B6FE; }
+.bg-ether { background-color: #FE427E; }
+.bg-fire { background-color: #FF5623; }
+.bg-ice { background-color: #1DAFAD; }
+.bg-physical { background-color: #EDCC2C; }
+.bg-wind { background-color: #0AC272; }
+.bg-other { background-color: #4BEEA7; }
 
 /* Grid des personnages */
 .personnage-grid {
@@ -91,14 +91,15 @@ h1 {
 
 /* Carte personnage */
 .personnage-card {
-    border: 5px solid #333; /* bordure plus épaisse */
+    border: 6px solid black;
     border-radius: 12px;
+    cursor: pointer;
     padding: 10px;
     width: 180px;
-    background-color: #fff;
     text-align: center;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+    color: #fff; /* texte en blanc pour contraste sur le fond coloré */
 }
 
 .personnage-card:hover {
@@ -114,6 +115,7 @@ h1 {
     width: 150px;
     height: 150px;
     margin: 0 auto 10px auto;
+    background: black;
 }
 
 .personnage-img {
