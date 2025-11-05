@@ -14,7 +14,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="content">
         <?= $this->section('content') ?>
     </main>
 

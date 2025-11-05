@@ -5,7 +5,6 @@
     font-style: normal;
 }
 
-
 body {
     font-family: ZenlessFont, sans-serif;
     margin: 0;
@@ -18,7 +17,7 @@ h1 {
     font-size: 24px;
     color: #A6EC34;
     margin-top: 2rem;
-    margin-left: 12px;
+    margin-left: 32px;
     text-shadow: 4px 0 black, -4px 0 black, 0 4px black, 0 -4px black,
     4px 4px black, -4px -4px black, 4px -4px black, -4px 4px black;
 }
@@ -103,8 +102,8 @@ h1 {
 }
 
 .personnage-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 4px 6px 20px rgba(0,0,0,0.2);
+    transform: translateY(-10px);
+    box-shadow: 4px 6px 20px rgba(0,0,0,0.7);
 }
 
 /* Image carrée */
