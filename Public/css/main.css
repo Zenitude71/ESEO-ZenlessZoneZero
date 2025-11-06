@@ -49,10 +49,16 @@ h1 {
     padding: 10px 20px;
 }
 
-.header-content {
+.header-left {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* logo à gauche, menu à droite */
+    align-items: center;
 }
 
 .header-icon {
@@ -66,6 +72,30 @@ h1 {
     color: #fff;
     text-shadow: 4px 0 black, -4px 0 black, 0 4px black, 0 -4px black,
     4px 4px black, -4px -4px black, 4px -4px black, -4px 4px black;
+}
+
+
+/* === MENU DE NAVIGATION === */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: 1px 1px 0 #000;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.main-nav a:hover {
+    color: #A6EC34;
+    transform: scale(1.1);
 }
 
 
