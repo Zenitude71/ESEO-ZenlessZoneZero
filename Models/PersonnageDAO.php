@@ -57,4 +57,19 @@ class PersonnageDAO extends BasePDODAO
         $this->execRequest($sql, [$name, $element, $unitclass, $origin, $rarity, $url_img, $id]);
     }
 
+    public function editPerso(string $id): void
+    {
+        $dao = new \Models\PersonnageDAO();
+        $perso = $dao->getByID($id);
+
+        if (!$perso) {
+            // Si le personnage n'existe pas, redirection vers l'accueil
+            header("Location: index.php?message=" . urlencode("Personnage introuvable"));
+            exit;
+        }
+
+        // Affichage du formulaire avec les données existantes
+        echo $this->templates->render('add-perso', ['perso' => $perso]);
+    }
+
 }

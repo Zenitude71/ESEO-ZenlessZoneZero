@@ -1,5 +1,4 @@
 <?php
-
 namespace Controllers\Router\Route;
 
 use Controllers\PersoController;
@@ -15,16 +14,12 @@ class RouteEditPerso extends Route
 
     public function get($params = [])
     {
-        $id = $params['id'] ?? null;
-        if ($id) {
-            $this->controller->editPerso($id);
-        } else {
-            header('Location: index.php?message=' . urlencode('Aucun ID fourni pour l’édition.'));
-        }
+        $id = $this->getParam($params, 'id');
+        $this->controller->editPerso($id);
     }
 
     public function post($params = [])
     {
-        $this->get($params);
+        $this->controller->displayAddPerso();
     }
 }

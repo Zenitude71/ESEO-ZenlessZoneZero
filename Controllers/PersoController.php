@@ -16,7 +16,7 @@ class PersoController
     // Dans PersoController.php
     public function displayAddPerso(): void
     {
-        // Vérifie que le formulaire est soumis
+        // Vérifie si le formulaire est soumis
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name      = $_POST['name'] ?? '';
             $element   = $_POST['element'] ?? '';
@@ -25,9 +25,9 @@ class PersoController
             $rarity    = $_POST['rarity'] ?? '';
             $url_img   = $_POST['url_img'] ?? '';
 
-            // Ici tu pourrais utiliser un DAO pour insérer en base
             $dao = new \Models\PersonnageDAO();
 
+            // <-- Ici on place ce code
             if (!empty($_GET['id'])) {
                 // update existant
                 $dao->update($_GET['id'], $name, $element, $unitclass, $origin, $rarity, $url_img);
@@ -36,15 +36,20 @@ class PersoController
                 $dao->add($name, $element, $unitclass, $origin, $rarity, $url_img);
             }
 
-            // Redirection vers la page d'accueil
+            // Redirection vers l'accueil après insertion / update
             header("Location: index.php");
             exit;
         }
 
-        // Sinon affichage du formulaire
-        $perso = !empty($_GET['id']) ? (new \Models\PersonnageDAO())->getByID($_GET['id']) : null;
+        $perso = null;
+        if (!empty($_GET['id'])) {
+            $perso = (new \Models\PersonnageDAO())->getByID($_GET['id']);
+        }
+
         echo $this->templates->render('add-perso', ['perso' => $perso]);
+
     }
+
 
     public function editPerso($id)
     {
