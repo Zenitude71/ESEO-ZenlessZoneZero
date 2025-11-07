@@ -3,61 +3,59 @@
 namespace Controllers\Router;
 
 use Controllers\MainController;
+use Controllers\PersoController;
 use Controllers\Router\Route\RouteIndex;
-use Controllers\Router\Route\Route;
+use Controllers\Router\Route\RouteAddPerso;
+use Controllers\Router\Route\RouteAddElement;
+use Controllers\Router\Route\RouteLogs;
+use Controllers\Router\Route\RouteLogin;
 use Exception;
 
 class Router
 {
     private array $routeList = [];
     private array $ctrlList = [];
-    private string $actionKey;
+    private string $action_key;
 
-    public function __construct(string $nameOfActionKey = 'action')
+    public function __construct(string $action_key = "action")
     {
-        $this->actionKey = $nameOfActionKey;
+        $this->action_key = $action_key;
         $this->createControllerList();
         $this->createRouteList();
     }
 
-    /**
-     * Crée la liste des contrôleurs
-     */
     private function createControllerList(): void
     {
-        $this->ctrlList['main'] = new MainController();
+        $this->ctrlList = [
+            'main'  => new MainController(),
+            'perso' => new PersoController(),
+        ];
     }
 
-    /**
-     * Crée la liste des routes
-     */
     private function createRouteList(): void
     {
-        $this->routeList['index'] = new RouteIndex($this->ctrlList['main']);
+        $this->routeList = [
+            'index'            => new RouteIndex($this->ctrlList['main']),
+            'add-perso'        => new RouteAddPerso($this->ctrlList['perso']),
+            'add-perso-element'=> new RouteAddElement($this->ctrlList['perso']),
+            'logs'             => new RouteLogs($this->ctrlList['main']),
+            'login'            => new RouteLogin($this->ctrlList['main']),
+        ];
     }
 
-    /**
-     * Méthode principale du routeur : choisit et appelle la bonne route
-     */
     public function routing(array $get, array $post): void
     {
-        $action = $get[$this->actionKey] ?? 'index'; // action par défaut
+        $action = $get[$this->action_key] ?? 'index';
 
         if (!isset($this->routeList[$action])) {
-            throw new Exception("Route inconnue : '$action'");
+            throw new Exception("Route inconnue : $action");
         }
 
         $route = $this->routeList[$action];
-        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        $method = ($_SERVER['REQUEST_METHOD'] === 'POST') ? 'POST' : 'GET';
 
-        if (!($route instanceof Route)) {
-            throw new Exception("La route '$action' n'est pas valide");
-        }
+        $params = ($method === 'POST') ? $post : $get;
 
-        if ($method === 'POST') {
-            $route->action($post, 'POST');
-        } else {
-            $route->action($get, 'GET');
-        }
+        $route->action($params, $method);
     }
 }
