@@ -13,15 +13,20 @@ class PersoController
         $this->templates = new Engine(__DIR__ . '/../Views');
     }
 
-    // Page d’ajout de personnage
-    public function displayAddPerso(): void
+    public function displayAddPerso()
     {
         echo $this->templates->render('add-perso');
     }
 
-    // Page d’ajout d’un élément
-    public function displayAddElement(): void
+    public function editPerso($id)
     {
-        echo $this->templates->render('add-element');
+        header("Location: index.php?action=add-perso&id=" . urlencode($id));
+        exit;
+    }
+
+    public function deletePerso($id)
+    {
+        header("Location: index.php?message=" . urlencode("Personnage supprimé avec succès !"));
+        exit;
     }
 }

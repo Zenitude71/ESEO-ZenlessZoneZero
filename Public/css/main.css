@@ -131,11 +131,6 @@ h1 {
     color: #fff; /* texte en blanc pour contraste sur le fond coloré */
 }
 
-.personnage-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 4px 6px 20px rgba(0,0,0,0.7);
-}
-
 /* Image carrée */
 .personnage-img-wrapper {
     border: 4px solid #555;
@@ -166,4 +161,141 @@ h1 {
     font-weight: bold;
     font-size: 1em;
     margin: 3px 0;
+}
+
+.personnage-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Style de base commun */
+.personnage-actions a {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+}
+
+/* ÉDITER - vert néon */
+.btn-edit {
+    border-color: #00ff95;
+    background: linear-gradient(145deg, rgba(0,255,149,0.2), rgba(0,255,149,0.1));
+}
+
+.btn-edit:hover {
+    background: rgba(0,255,149,0.3);
+    box-shadow: 0 0 15px #00ff95, inset 0 0 10px #00ff95;
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* SUPPRIMER - rouge néon */
+.btn-delete {
+    border-color: #ff3b3b;
+    background: linear-gradient(145deg, rgba(255,59,59,0.2), rgba(255,59,59,0.1));
+}
+
+.btn-delete:hover {
+    background: rgba(255,59,59,0.3);
+    box-shadow: 0 0 15px #ff3b3b, inset 0 0 10px #ff3b3b;
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Effet quand on clique */
+.personnage-actions a:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px #000 inset;
+}
+
+
+/* AJOUT OU MISE A JOUR DES PERSONNAGES */
+
+/* Formulaire Add/Update Personnage */
+.perso-form {
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 4px solid #000;
+    border-radius: 12px;
+    background-color: #222;
+    color: #fff;
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+}
+
+.perso-form h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #A6EC34;
+    text-shadow: 2px 2px 0 black;
+}
+
+.perso-form-group {
+    margin-bottom: 15px;
+}
+
+.perso-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.perso-form-group input,
+.perso-form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+.perso-form-group input:focus,
+.perso-form-group select:focus {
+    border-color: #A6EC34;
+    outline: none;
+    box-shadow: 0 0 5px #A6EC34;
+}
+
+.perso-form-button {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 10px;
+    background-color: #FFAF2A;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.perso-form-button:hover {
+    background-color: #FFA500;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.perso-form-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #06B4E0;
+    border-radius: 6px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
 }

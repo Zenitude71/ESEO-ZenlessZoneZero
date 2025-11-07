@@ -27,7 +27,6 @@
             ?>
 
             <div class="personnage-card <?= $elementClass ?>">
-
                 <!-- Image carrée -->
                 <div class="personnage-img-wrapper">
                     <img src="<?= htmlspecialchars($perso->getUrlImg()) ?>"
@@ -41,7 +40,13 @@
                 </div>
                 <div class="personnage-rank">(<?= $rank ?>)</div>
 
+                <!-- Actions -->
+                <div class="personnage-actions">
+                    <a href="index.php?action=edit-perso&id=<?= urlencode($perso->getId()) ?>" class="btn-edit">✏️</a>
+                    <a href="index.php?action=del-perso&id=<?= urlencode($perso->getId()) ?>" class="btn-delete">🗑️</a>
+                </div>
             </div>
+
         <?php endforeach; ?>
     </div>
 <?php else: ?>

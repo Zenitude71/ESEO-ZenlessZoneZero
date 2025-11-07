@@ -4,6 +4,8 @@ namespace Controllers\Router;
 
 use Controllers\MainController;
 use Controllers\PersoController;
+use Controllers\Router\Route\RouteDeletePerso;
+use Controllers\Router\Route\RouteEditPerso;
 use Controllers\Router\Route\RouteIndex;
 use Controllers\Router\Route\RouteAddPerso;
 use Controllers\Router\Route\RouteAddElement;
@@ -35,11 +37,13 @@ class Router
     private function createRouteList(): void
     {
         $this->routeList = [
-            'index'            => new RouteIndex($this->ctrlList['main']),
-            'add-perso'        => new RouteAddPerso($this->ctrlList['perso']),
-            'add-perso-element'=> new RouteAddElement($this->ctrlList['perso']),
-            'logs'             => new RouteLogs($this->ctrlList['main']),
-            'login'            => new RouteLogin($this->ctrlList['main']),
+            'index'             => new RouteIndex($this->ctrlList['main']),
+            'add-perso'         => new RouteAddPerso($this->ctrlList['perso']),
+            'add-perso-element' => new RouteAddElement($this->ctrlList['perso']),
+            'logs'              => new RouteLogs($this->ctrlList['main']),
+            'login'             => new RouteLogin($this->ctrlList['main']),
+            'edit-perso'        => new RouteEditPerso($this->ctrlList['perso']),
+            'del-perso'         => new RouteDeletePerso($this->ctrlList['perso']),
         ];
     }
 
