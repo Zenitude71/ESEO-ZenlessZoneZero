@@ -1,54 +1,58 @@
-<?php $this->layout('layout')?>
+<?php $this->layout('layout', ['title' => 'Ajouter un personnage']); ?>
 
-<form class="perso-form" method="post" action="index.php?action=add-perso<?= isset($perso) ? '&id=' . urlencode($perso->getId()) : '' ?>" enctype="multipart/form-data">
+<h1>Ajouter / Modifier un personnage</h1>
 
-    <h1><?= isset($perso) ? 'Modifier Personnage' : 'Ajouter Personnage' ?></h1>
+<form method="POST" action="" class="perso-form">
 
     <div class="perso-form-group">
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="name" value="<?= isset($perso) ? htmlspecialchars($perso->getName()) : '' ?>" required>
+        <label class="required">Nom</label>
+        <input type="text" name="name" class="perso-input"
+               value="<?= $perso ? htmlspecialchars($perso->getName()) : '' ?>" required>
     </div>
 
     <div class="perso-form-group">
-        <label for="element">Élément :</label>
-        <select id="element" name="element" required>
+        <label class="required">Élément</label>
+        <select name="element" class="perso-select" required>
             <?php
             $elements = ['Electric','Ether','Fire','Ice','Physical','Wind','Other'];
-            foreach ($elements as $elem):
-                $selected = (isset($perso) && $perso->getElement() === $elem) ? 'selected' : '';
-                ?>
-                <option value="<?= $elem ?>" <?= $selected ?>><?= $elem ?></option>
-            <?php endforeach; ?>
+            foreach ($elements as $el) {
+                $selected = ($perso && $perso->getElement() === $el) ? 'selected' : '';
+                echo "<option value=\"$el\" $selected>$el</option>";
+            }
+            ?>
         </select>
     </div>
 
     <div class="perso-form-group">
-        <label for="unitclass">Classe :</label>
-        <input type="text" id="unitclass" name="unitclass" value="<?= isset($perso) ? htmlspecialchars($perso->getUnitclass()) : '' ?>" required>
+        <label class="required">Classe</label>
+        <input type="text" name="unitclass" class="perso-input"
+               value="<?= $perso ? htmlspecialchars($perso->getUnitclass()) : '' ?>" required>
     </div>
 
     <div class="perso-form-group">
-        <label for="origin">Origine :</label>
-        <input type="text" id="origin" name="origin" value="<?= isset($perso) ? htmlspecialchars($perso->getOrigin()) : '' ?>">
+        <label>Origine</label>
+        <input type="text" name="origin" class="perso-input"
+               value="<?= $perso ? htmlspecialchars($perso->getOrigin()) : '' ?>">
     </div>
 
     <div class="perso-form-group">
-        <label for="rarity">Rareté :</label>
-        <select id="rarity" name="rarity" required>
+        <label class="required">Rareté</label>
+        <select name="rarity" class="perso-select" required>
             <?php
-            $rarities = [5,4];
-            foreach ($rarities as $r):
-                $selected = (isset($perso) && $perso->getRarity() == $r) ? 'selected' : '';
-                ?>
-                <option value="<?= $r ?>" <?= $selected ?>><?= $r ?></option>
-            <?php endforeach; ?>
+            $rarities = [5=>'S', 4=>'A'];
+            foreach ($rarities as $val => $label) {
+                $selected = ($perso && $perso->getRarity() === $val) ? 'selected' : '';
+                echo "<option value=\"$val\" $selected>$label</option>";
+            }
+            ?>
         </select>
     </div>
 
     <div class="perso-form-group">
-        <label for="url_img">URL Image :</label>
-        <input type="text" id="url_img" name="url_img" value="<?= isset($perso) ? htmlspecialchars($perso->getUrlImg()) : '' ?>">
+        <label>URL de l'image</label>
+        <input type="text" name="url_img" class="perso-input"
+               value="<?= $perso ? htmlspecialchars($perso->getUrlImg()) : '' ?>">
     </div>
 
-    <button type="submit" class="perso-form-button"><?= isset($perso) ? 'Modifier' : 'Ajouter' ?></button>
+    <button type="submit" class="perso-form-button">Valider</button>
 </form>

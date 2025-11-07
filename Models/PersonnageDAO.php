@@ -39,4 +39,22 @@ class PersonnageDAO extends BasePDODAO
 
         return new Personnage($row);
     }
+
+    // Méthode pour ajouter un personnage
+    public function add(string $name, string $element, string $unitclass, string $origin, int $rarity, string $url_img): void
+    {
+        $sql = "INSERT INTO personnage (name, element, unitclass, origin, rarity, url_img)
+                VALUES (?, ?, ?, ?, ?, ?)";
+        $this->execRequest($sql, [$name, $element, $unitclass, $origin, $rarity, $url_img]);
+    }
+
+    // Méthode pour mettre à jour un personnage existant
+    public function update(string $id, string $name, string $element, string $unitclass, string $origin, int $rarity, string $url_img): void
+    {
+        $sql = "UPDATE personnage 
+                SET name = ?, element = ?, unitclass = ?, origin = ?, rarity = ?, url_img = ?
+                WHERE id = ?";
+        $this->execRequest($sql, [$name, $element, $unitclass, $origin, $rarity, $url_img, $id]);
+    }
+
 }
