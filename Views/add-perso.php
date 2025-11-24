@@ -4,6 +4,10 @@
 
 <form method="POST" action="" class="perso-form">
 
+    <?php if ($perso): ?>
+        <input type="hidden" name="id" value="<?= $perso->getId() ?>">
+    <?php endif; ?>
+
     <div class="perso-form-group">
         <label class="required">Nom</label>
         <input type="text" name="name" class="perso-input"

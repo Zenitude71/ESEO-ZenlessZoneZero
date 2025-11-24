@@ -18,7 +18,7 @@ class PersoController
     {
         var_dump($params);
         $dao = new PersonnageDAO();
-        
+
         if ($method === 'POST') {
             $id        = $params['id'] ?? null;
             $name      = $params['name'] ?? '';
