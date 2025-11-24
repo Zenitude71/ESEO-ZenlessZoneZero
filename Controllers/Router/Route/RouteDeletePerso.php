@@ -1,5 +1,4 @@
 <?php
-
 namespace Controllers\Router\Route;
 
 use Controllers\PersoController;
@@ -18,8 +17,6 @@ class RouteDeletePerso extends Route
         $id = $params['id'] ?? null;
         if ($id) {
             $this->controller->deletePerso($id);
-        } else {
-            header('Location: index.php?message=' . urlencode('Aucun ID fourni pour la suppression.'));
         }
     }
 

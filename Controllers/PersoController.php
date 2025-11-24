@@ -56,7 +56,11 @@ class PersoController
 
     public function deletePerso($id)
     {
+        $dao = new \Models\PersonnageDAO();
+        $dao->delete($id);
+
         header("Location: index.php?message=" . urlencode("Personnage supprimé avec succès !"));
         exit;
     }
+
 }
