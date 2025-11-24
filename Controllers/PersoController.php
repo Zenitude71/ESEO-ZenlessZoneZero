@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use League\Plates\Engine;
+use Models\PersonnageDAO;
 
 class PersoController
 {
@@ -13,43 +14,39 @@ class PersoController
         $this->templates = new Engine(__DIR__ . '/../Views');
     }
 
-    // Dans PersoController.php
-    public function displayAddPerso(): void
+    public function displayAddPerso(array $params = [], string $method = 'GET'): void
     {
-        // Vérifie si le formulaire est soumis
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name      = $_POST['name'] ?? '';
-            $element   = $_POST['element'] ?? '';
-            $unitclass = $_POST['unitclass'] ?? '';
-            $origin    = $_POST['origin'] ?? '';
-            $rarity    = $_POST['rarity'] ?? '';
-            $url_img   = $_POST['url_img'] ?? '';
+        var_dump($params);
+        $dao = new PersonnageDAO();
+        
+        if ($method === 'POST') {
+            $id        = $params['id'] ?? null;
+            $name      = $params['name'] ?? '';
+            $element   = $params['element'] ?? '';
+            $unitclass = $params['unitclass'] ?? '';
+            $origin    = $params['origin'] ?? '';
+            $rarity    = $params['rarity'] ?? '';
+            $url_img   = $params['url_img'] ?? '';
 
-            $dao = new \Models\PersonnageDAO();
-
-            // <-- Ici on place ce code
-            if (!empty($_GET['id'])) {
-                // update existant
-                $dao->update($_GET['id'], $name, $element, $unitclass, $origin, $rarity, $url_img);
+            if (!empty($id)) {
+                $dao->update($id, $name, $element, $unitclass, $origin, $rarity, $url_img);
             } else {
-                // ajout
                 $dao->add($name, $element, $unitclass, $origin, $rarity, $url_img);
             }
 
-            // Redirection vers l'accueil après insertion / update
-            header("Location: index.php");
+            header("Location: index.php?action=index");
             exit;
         }
 
         $perso = null;
-        if (!empty($_GET['id'])) {
-            $perso = (new \Models\PersonnageDAO())->getByID($_GET['id']);
+        if (!empty($params['id'])) {
+            $perso = $dao->getByID($params['id']);
         }
 
-        echo $this->templates->render('add-perso', ['perso' => $perso]);
-
+        echo $this->templates->render('add-perso', [
+            'perso' => $perso
+        ]);
     }
-
 
     public function editPerso($id)
     {

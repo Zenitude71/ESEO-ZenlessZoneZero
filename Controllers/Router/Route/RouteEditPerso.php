@@ -14,12 +14,11 @@ class RouteEditPerso extends Route
 
     public function get($params = [])
     {
-        $id = $this->getParam($params, 'id');
-        $this->controller->editPerso($id);
+        $this->controller->displayAddPerso($params, 'GET');
     }
 
     public function post($params = [])
     {
-        $this->controller->displayAddPerso();
+        $this->controller->displayAddPerso($params, 'POST');
     }
 }
