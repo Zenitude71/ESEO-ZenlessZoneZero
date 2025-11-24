@@ -11,7 +11,6 @@ class MainController
 
     public function __construct()
     {
-        // Chemin vers ton dossier de vues
         $this->templates = new Engine(__DIR__ . '/../Views');
     }
 

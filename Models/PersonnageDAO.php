@@ -40,7 +40,6 @@ class PersonnageDAO extends BasePDODAO
         return new Personnage($row);
     }
 
-    // Méthode pour ajouter un personnage
     public function add(string $name, string $element, string $unitclass, string $origin, int $rarity, string $url_img): void
     {
         $sql = "INSERT INTO personnage (name, element, unitclass, origin, rarity, url_img)
@@ -48,7 +47,6 @@ class PersonnageDAO extends BasePDODAO
         $this->execRequest($sql, [$name, $element, $unitclass, $origin, $rarity, $url_img]);
     }
 
-    // Méthode pour mettre à jour un personnage existant
     public function update(string $id, string $name, string $element, string $unitclass, string $origin, int $rarity, string $url_img): void
     {
         $sql = "UPDATE personnage 
@@ -63,12 +61,10 @@ class PersonnageDAO extends BasePDODAO
         $perso = $dao->getByID($id);
 
         if (!$perso) {
-            // Si le personnage n'existe pas, redirection vers l'accueil
             header("Location: index.php?message=" . urlencode("Personnage introuvable"));
             exit;
         }
 
-        // Affichage du formulaire avec les données existantes
         echo $this->templates->render('add-perso', ['perso' => $perso]);
     }
 

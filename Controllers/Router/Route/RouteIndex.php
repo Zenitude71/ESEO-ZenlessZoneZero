@@ -15,13 +15,11 @@ class RouteIndex extends Route
 
     public function get(array $params = [])
     {
-        // Appelle la page d'accueil
         $this->controller->index();
     }
 
     public function post(array $params = [])
     {
-        // Pour le moment, on redirige vers index
         $this->controller->index();
     }
 }
