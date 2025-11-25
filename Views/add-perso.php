@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Ajouter un personnage']); ?>
+<?php $this->layout('layout', ['title' => 'Ajouter / Modifier un personnage']); ?>
 
 <h1>Ajouter / Modifier un personnage</h1>
 
@@ -17,26 +17,35 @@
     <div class="perso-form-group">
         <label class="required">Élément</label>
         <select name="element" class="perso-select" required>
-            <?php
-            $elements = ['Electric','Ether','Fire','Ice','Physical','Wind','Other'];
-            foreach ($elements as $el) {
-                $selected = ($perso && $perso->getElement() === $el) ? 'selected' : '';
-                echo "<option value=\"$el\" $selected>$el</option>";
-            }
-            ?>
+            <?php foreach ($elements as $el): ?>
+                <option value="<?= $el['id'] ?>" <?= ($perso && $perso->getElement() == $el['id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($el['name']) ?>
+                </option>
+            <?php endforeach; ?>
         </select>
     </div>
 
     <div class="perso-form-group">
         <label class="required">Classe</label>
-        <input type="text" name="unitclass" class="perso-input"
-               value="<?= $perso ? htmlspecialchars($perso->getUnitclass()) : '' ?>" required>
+        <select name="unitclass" class="perso-select" required>
+            <?php foreach ($unitclasses as $uc): ?>
+                <option value="<?= $uc['id'] ?>" <?= ($perso && $perso->getUnitclass() == $uc['id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($uc['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
     </div>
 
     <div class="perso-form-group">
         <label>Origine</label>
-        <input type="text" name="origin" class="perso-input"
-               value="<?= $perso ? htmlspecialchars($perso->getOrigin()) : '' ?>">
+        <select name="origin" class="perso-select">
+            <option value="">-- Aucune --</option>
+            <?php foreach ($origins as $org): ?>
+                <option value="<?= $org['id'] ?>" <?= ($perso && $perso->getOrigin() == $org['id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($org['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
     </div>
 
     <div class="perso-form-group">
