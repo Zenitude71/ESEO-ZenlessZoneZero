@@ -1,14 +1,14 @@
 USE ZenlessZoneZero;
 
 -- INSERT ELEMENTS
-INSERT INTO element (name, url_img) VALUES
-    ('Electric', 'public/img/element/electric.png'),
-    ('Ether', 'public/img/element/ether.png'),
-    ('Fire', 'public/img/element/fire.png'),
-    ('Ice', 'public/img/element/ice.png'),
-    ('Physical', 'public/img/element/physical.png'),
-    ('Wind', 'public/img/element/wind.png'),
-    ('Other', 'public/img/element/other.png');
+INSERT INTO element (name, color) VALUES
+    ('Electric', '#33B6FE'),
+    ('Ether', '#FE427E'),
+    ('Fire', '#FF5623'),
+    ('Ice', '#1DAFAD'),
+    ('Physical', '#EDCC2C'),
+    ('Wind', '#0AC272'),
+    ('Other', '#4BEEA7');
 
 
 -- INSERT ORIGINS

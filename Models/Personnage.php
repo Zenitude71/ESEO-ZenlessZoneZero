@@ -11,6 +11,8 @@ class Personnage
     private int $rarity;
     private ?string $origin;
     private string $urlImg;
+    private string $elementColor;
+
 
     public function __construct(array $data = [])
     {
@@ -20,7 +22,7 @@ class Personnage
     private function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
-            $method = 'set' . ucfirst(str_replace('_', '', $key));
+            $method = 'set' . str_replace('_', '', ucwords($key, '_'));
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }
@@ -47,4 +49,12 @@ class Personnage
 
     public function getUrlImg(): string { return $this->urlImg; }
     public function setUrlImg(string $urlImg): void { $this->urlImg = $urlImg; }
+
+    public function getElementColor(): string {
+        return $this->elementColor;
+    }
+    public function setElementColor(string $color): void {
+        $this->elementColor = $color;
+    }
+
 }

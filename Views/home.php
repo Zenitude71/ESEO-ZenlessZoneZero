@@ -7,47 +7,34 @@
         <?php foreach ($listPersonnage as $perso): ?>
 
             <?php
-            $elementClassMap = [
-                    'Electric' => 'bg-electric',
-                    'Ether' => 'bg-ether',
-                    'Fire' => 'bg-fire',
-                    'Ice' => 'bg-ice',
-                    'Physical' => 'bg-physical',
-                    'Wind' => 'bg-wind',
-                    'Other' => 'bg-other',
-                    'Fairy' => 'bg-fairy',
-                    'Hacked' => 'bg-hacked',
-            ];
-            $elementClass = $elementClassMap[$perso->getElement()] ?? '';
+            // Récupération de la couleur hex de l’élément
+            $elementColor = $perso->getElementColor();
 
-            // Mapping rareté
+            // Rareté → Rank
             $rarityMap = [5 => 'S', 4 => 'A'];
             $rank = $rarityMap[$perso->getRarity()] ?? $perso->getRarity();
             ?>
 
-            <div class="personnage-card <?= $elementClass ?>">
-                <!-- Image carrée -->
+            <div class="personnage-card" style="background-color: <?= htmlspecialchars($elementColor) ?>;">
+
                 <div class="personnage-img-wrapper">
                     <img src="<?= htmlspecialchars($perso->getUrlImg()) ?>"
                          alt="<?= htmlspecialchars($perso->getName()) ?>"
                          class="personnage-img">
                 </div>
 
-                <!-- Nom + Rank -->
                 <div class="personnage-name">
                     <?= htmlspecialchars($perso->getName()) ?>
                 </div>
+
                 <div class="personnage-rank">(<?= $rank ?>)</div>
 
-                <!-- Actions -->
                 <div class="personnage-actions">
                     <a href="index.php?action=edit-perso&id=<?= urlencode($perso->getId()) ?>" class="btn-edit">✏️</a>
-
                     <a href="index.php?action=del-perso&id=<?= urlencode($perso->getId()) ?>" class="btn-delete">🗑️</a>
-
                 </div>
-            </div>
 
+            </div>
         <?php endforeach; ?>
     </div>
 <?php else: ?>
