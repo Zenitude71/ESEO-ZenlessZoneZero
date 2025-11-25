@@ -18,9 +18,7 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="index.php?action=add-perso">Ajouter un perso</a></li>
-                <li><a href="index.php?action=add-perso-element">Ajouter un élément</a></li>
-                <li><a href="index.php?action=logs">Logs</a></li>
-                <li><a href="index.php?action=login">Login</a></li>
+                <li><a href="index.php?action=add-attribut">Ajouter un attribut</a></li>
             </ul>
         </nav>
     </div>

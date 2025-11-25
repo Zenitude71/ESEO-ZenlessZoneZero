@@ -6,7 +6,8 @@ USE ZenlessZoneZero;
 CREATE TABLE IF NOT EXISTS element (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    color VARCHAR(7) NOT NULL
+    color VARCHAR(7) NOT NULL,
+    url_img VARCHAR(512) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 

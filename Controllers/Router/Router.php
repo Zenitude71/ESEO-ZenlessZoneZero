@@ -2,8 +2,10 @@
 
 namespace Controllers\Router;
 
+use Controllers\AttributController;
 use Controllers\MainController;
 use Controllers\PersoController;
+use Controllers\Router\Route\RouteAddAttribut;
 use Controllers\Router\Route\RouteDeletePerso;
 use Controllers\Router\Route\RouteEditPerso;
 use Controllers\Router\Route\RouteIndex;
@@ -29,8 +31,9 @@ class Router
     private function createControllerList(): void
     {
         $this->ctrlList = [
-            'main'  => new MainController(),
-            'perso' => new PersoController(),
+            'main'     => new MainController(),
+            'perso'    => new PersoController(),
+            'attribut' => new AttributController()
         ];
     }
 
@@ -44,6 +47,7 @@ class Router
             'login'             => new RouteLogin($this->ctrlList['main']),
             'edit-perso'        => new RouteEditPerso($this->ctrlList['perso']),
             'del-perso'         => new RouteDeletePerso($this->ctrlList['perso']),
+            'add-attribut'      => new RouteAddAttribut($this->ctrlList['attribut']),
         ];
     }
 

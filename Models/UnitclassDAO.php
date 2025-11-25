@@ -17,4 +17,10 @@ class UnitclassDAO extends BasePDODAO
 
         return $result ?: null;
     }
+
+    public function add(string $name, string $url_img): void
+    {
+        $sql = "INSERT INTO unitclass (name, url_img) VALUES (?, ?)";
+        $this->execRequest($sql, [$name, $url_img]);
+    }
 }

@@ -17,4 +17,10 @@ class ElementDAO extends BasePDODAO
 
         return $result ?: null;
     }
+
+    public function add(string $name, string $color, string $url_img): void
+    {
+        $sql = "INSERT INTO element (name, color, url_img) VALUES (?, ?, ?)";
+        $this->execRequest($sql, [$name, $color, $url_img]);
+    }
 }
