@@ -53,19 +53,6 @@ class PersonnageDAO extends BasePDODAO
         $this->execRequest($sql, [$name, $element, $unitclass, $origin, $rarity, $url_img, $id]);
     }
 
-    public function editPerso(string $id): void
-    {
-        $dao = new \Models\PersonnageDAO();
-        $perso = $dao->getByID($id);
-
-        if (!$perso) {
-            header("Location: index.php?message=" . urlencode("Personnage introuvable"));
-            exit;
-        }
-
-        echo $this->templates->render('add-perso', ['perso' => $perso]);
-    }
-
     public function delete(string $id): void
     {
         $sql = "DELETE FROM personnage WHERE id = ?";
