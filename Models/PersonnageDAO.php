@@ -2,9 +2,7 @@
 
 namespace Models;
 
-use Exception;
 use PDO;
-use PDOStatement;
 
 class PersonnageDAO extends BasePDODAO
 {

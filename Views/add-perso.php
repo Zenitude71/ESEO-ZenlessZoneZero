@@ -1,6 +1,11 @@
 <?php $this->layout('layout', ['title' => 'Ajouter / Modifier un personnage']); ?>
 
-<h1>Ajouter / Modifier un personnage</h1>
+<?php if ($perso): ?>
+    <h1>Modifier un personnage</h1>
+<?php else: ?>
+    <h1>Ajouter un personnage</h1>
+<?php endif; ?>
+
 
 <form method="POST" action="" class="perso-form">
 
