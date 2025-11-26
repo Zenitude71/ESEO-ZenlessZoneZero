@@ -42,31 +42,31 @@ pass = ""
 
 #### Ouvre le projet dans PhpStorm.
 
-Va dans File > Settings > PHP > Built-in Web Server (ou Preferences sur macOS).
-Configure le Document root sur le dossier racine du projet.
-Choisis un Port (ex: 8000).
-Clique sur Start Server.
-Accède à l’application dans ton navigateur à l’URL : http://localhost:8000/index.php
+- Va dans File > Settings > PHP > Built-in Web Server (ou Preferences sur macOS).
+- Configure le Document root sur le dossier racine du projet.
+- Choisis un Port (ex: 8000).
+- Clique sur Start Server.
+- Accède à l’application dans ton navigateur à l’URL : http://localhost:8000/index.php
 
 #### Utilisation
 
-Liste des personnages : http://localhost:8000/index.php
-Ajouter un personnage : http://localhost:8000/index.php?action=add-perso
-Modifier un personnage : http://localhost:8000/index.php?action=edit-perso&id={id}
-Supprimer un personnage : http://localhost:8000/index.php?action=del-perso&id={id}
-Ajouter un attribut (Element, Origin, UnitClass) : http://localhost:8000/index.php?action=add-attribut
+- Liste des personnages : http://localhost:8000/index.php
+- Ajouter un personnage : http://localhost:8000/index.php?action=add-perso
+- Modifier un personnage : http://localhost:8000/index.php?action=edit-perso&id={id}
+- Supprimer un personnage : http://localhost:8000/index.php?action=del-perso&id={id}
+- Ajouter un attribut (Element, Origin, UnitClass) : http://localhost:8000/index.php?action=add-attribut
 
 #### Architecture
 
-Controllers : Gestion de la logique de l'application.
-Models : DAO et entités pour accéder aux données.
-Views : Templates Plates pour l’affichage.
-Config : Paramètres de connexion à la base.
-Router : Gestion des routes et des actions GET/POST.
+- Controllers : Gestion de la logique de l'application.
+- Models : DAO et entités pour accéder aux données.
+- Views : Templates Plates pour l’affichage.
+- Config : Paramètres de connexion à la base.
+- Router : Gestion des routes et des actions GET/POST.
 
 #### Notes
 
-Les entités sont hydratées automatiquement à partir des données SQL.
-Les requêtes utilisent PDO avec des requêtes préparées pour la sécurité.
-L’élément d’un personnage possède une couleur HEX et une image associée.
-Les DAO gèrent séparément Element, Origin et UnitClass.
+- Les entités sont hydratées automatiquement à partir des données SQL.
+- Les requêtes utilisent PDO avec des requêtes préparées pour la sécurité.
+- L’élément d’un personnage possède une couleur HEX et une image associée.
+- Les DAO gèrent séparément Element, Origin et UnitClass.
