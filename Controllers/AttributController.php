@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Controllers;
 
 use League\Plates\Engine;
@@ -8,15 +7,30 @@ use Models\ElementDAO;
 use Models\OriginDAO;
 use Models\UnitclassDAO;
 
+/**
+ * Gère l'ajout des attributs (Element, Origin, UnitClass) via un formulaire.
+ * Utilise les DAO correspondants pour insérer les données en base.
+ *
+ * @package Controllers
+ */
 class AttributController
 {
     private Engine $templates;
 
+    /**
+     * Initialise le moteur de templates Plates.
+     */
     public function __construct()
     {
         $this->templates = new Engine(__DIR__ . '/../Views');
     }
 
+    /**
+     * Affiche et traite le formulaire d'ajout d'un attribut.
+     *
+     * @param array $params Paramètres du formulaire ($_GET ou $_POST)
+     * @param string $method Méthode HTTP ('GET' ou 'POST')
+     */
     public function displayAddAttribut(array $params = [], string $method = 'GET'): void
     {
         if ($method === 'POST') {

@@ -4,6 +4,13 @@ namespace Models;
 
 use PDO;
 
+/**
+ * Gère l'accès aux données pour les personnages.
+ * Permet de récupérer, ajouter, mettre à jour et supprimer des personnages
+ * en base de données. Chaque personnage récupéré est instancié en tant qu'objet Personnage.
+ *
+ * @package Models
+ */
 class PersonnageDAO extends BasePDODAO
 {
     public function getAll(): array
@@ -37,11 +44,7 @@ class PersonnageDAO extends BasePDODAO
         $stmt = $this->execRequest($sql, [$idPersonnage]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($row === false) {
-            return null;
-        }
-
-        return new Personnage($row);
+        return $row ? new Personnage($row) : null;
     }
 
     public function add(string $name, string $element, string $unitclass, ?string $origin, int $rarity, string $url_img): void

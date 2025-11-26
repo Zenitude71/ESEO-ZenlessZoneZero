@@ -2,6 +2,13 @@
 
 namespace Models;
 
+/**
+ * Gère l'accès aux données pour les classes d'unités (UnitClass).
+ * Permet de récupérer toutes les classes, récupérer une classe par ID
+ * et ajouter une nouvelle classe dans la base de données.
+ *
+ * @package Models
+ */
 class UnitclassDAO extends BasePDODAO
 {
     public function getAll(): array

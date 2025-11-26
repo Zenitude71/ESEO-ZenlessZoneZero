@@ -2,6 +2,13 @@
 
 namespace Models;
 
+/**
+ * Gestion des opérations CRUD sur la table `origin`.
+ * Permet de récupérer toutes les origines, une origine par ID,
+ * et d'ajouter une nouvelle origine avec son nom et son image.
+ *
+ * @package Models
+ */
 class OriginDAO extends BasePDODAO
 {
     public function getAll(): array

@@ -2,6 +2,13 @@
 
 namespace Models;
 
+/**
+ * Représente un personnage avec ses propriétés principales :
+ * ID, nom, élément, classe, rareté, origine, URL d'image et couleur de l'élément.
+ * Utilise l'hydratation pour initialiser ses propriétés depuis un tableau associatif.
+ *
+ * @package Models
+ */
 class Personnage
 {
     private ?string $id;
@@ -12,7 +19,6 @@ class Personnage
     private ?string $origin;
     private string $urlImg;
     private string $elementColor;
-
 
     public function __construct(array $data = [])
     {
@@ -50,11 +56,6 @@ class Personnage
     public function getUrlImg(): string { return $this->urlImg; }
     public function setUrlImg(string $urlImg): void { $this->urlImg = $urlImg; }
 
-    public function getElementColor(): string {
-        return $this->elementColor;
-    }
-    public function setElementColor(string $color): void {
-        $this->elementColor = $color;
-    }
-
+    public function getElementColor(): string { return $this->elementColor; }
+    public function setElementColor(string $color): void { $this->elementColor = $color; }
 }

@@ -8,10 +8,19 @@ use Config\Config;
 use Exception;
 use PDOStatement;
 
+/**
+ * Classe abstraite fournissant la connexion à la base de données et
+ * une méthode pour exécuter des requêtes préparées.
+ *
+ * @package Models
+ */
 abstract class BasePDODAO
 {
     private static ?PDO $db = null;
 
+    /**
+     * Retourne l'objet PDO connecté à la base de données.
+     */
     protected function getDB(): PDO
     {
         if (self::$db === null) {
@@ -37,6 +46,10 @@ abstract class BasePDODAO
         return self::$db;
     }
 
+    /**
+     * Prépare et exécute une requête SQL avec éventuellement des paramètres.
+     * Retourne le PDOStatement.
+     */
     protected function execRequest(string $sql, ?array $params = null): PDOStatement
     {
         try {

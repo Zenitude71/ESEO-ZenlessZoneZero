@@ -2,6 +2,13 @@
 
 namespace Models;
 
+/**
+ * Gestion des opérations CRUD sur la table `element`.
+ * Permet de récupérer tous les éléments, un élément par ID,
+ * et d'ajouter un nouvel élément avec son nom, sa couleur HEX et son image.
+ *
+ * @package Models
+ */
 class ElementDAO extends BasePDODAO
 {
     public function getAll(): array

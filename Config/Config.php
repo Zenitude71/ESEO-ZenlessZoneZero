@@ -4,15 +4,24 @@ namespace Config;
 
 use Exception;
 
+/**
+ * Gère le chargement et l'accès aux paramètres de configuration du projet.
+ * Charge automatiquement un fichier INI (prod.ini ou dev.ini) et stocke les
+ * valeurs de manière statique pour éviter des relectures multiples.
+ */
 class Config {
+
+    /**
+     * @var array|null Stocke les paramètres chargés depuis le fichier INI.
+     */
     private static ?array $param = null;
 
     /**
-     * Renvoie la valeur d'un paramètre de configuration
-     * @param string $nom
-     * @param mixed $valeurParDefaut
-     * @return mixed
-     * @throws Exception
+     * Retourne un paramètre de configuration.
+     *
+     * @param string $nom Nom du paramètre à récupérer.
+     * @param mixed|null $valeurParDefaut Valeur retournée si le paramètre n'existe pas.
+     * @return mixed La valeur du paramètre ou la valeur par défaut.
      */
     public static function get(string $nom, $valeurParDefaut = null)
     {
@@ -21,13 +30,16 @@ class Config {
     }
 
     /**
-     * Renvoie le tableau des paramètres en le chargeant si nécessaire
-     * @return array
-     * @throws Exception
+     * Charge et retourne les paramètres du fichier INI.
+     * Le chargement est effectué une seule fois, puis mis en cache.
+     *
+     * @throws Exception Si aucun fichier INI valide n'est trouvé.
+     * @return array Tableau associatif des paramètres.
      */
     private static function getParameter(): array
     {
         if (self::$param === null) {
+
             $cheminFichier = __DIR__ . '/prod.ini';
             if (!file_exists($cheminFichier)) {
                 $cheminFichier = __DIR__ . '/dev.ini';
