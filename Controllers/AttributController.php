@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Helpers\Logger;
 use League\Plates\Engine;
 use Models\ElementDAO;
 use Models\OriginDAO;
@@ -46,19 +47,23 @@ class AttributController
                     }
                     $dao = new ElementDAO();
                     $dao->add($name, $color, $url_img);
+                    Logger::log('CREATION', "Nouvel Élément ajouté : $name");
                     break;
 
                 case 'origin':
                     $dao = new OriginDAO();
                     $dao->add($name, $url_img);
+                    Logger::log('CREATION', "Nouvelle Origine ajoutée : $name");
                     break;
 
                 case 'unitclass':
                     $dao = new UnitclassDAO();
                     $dao->add($name, $url_img);
+                    Logger::log('CREATION', "Nouvelle Classe ajoutée : $name");
                     break;
 
                 default:
+                    Logger::log('ERREUR', "Tentative d'ajout d'attribut invalide : $type");
                     die("Type d'attribut invalide.");
             }
 

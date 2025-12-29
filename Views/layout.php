@@ -3,8 +3,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/public/images/Zenless_Zone_Zero_logo.png">
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="icon" type="image/png" href="/Public/images/Zenless_Zone_Zero_logo.png">
+    <link rel="stylesheet" href="/Public/css/main.css">
 </head>
 <body>
 <header class="main-header">

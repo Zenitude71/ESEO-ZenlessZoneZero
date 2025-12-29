@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Helpers\Logger;
 use League\Plates\Engine;
 use Models\ElementDAO;
 use Models\OriginDAO;
@@ -57,8 +58,10 @@ class PersoController
 
             if ($id) {
                 $this->persoDAO->update($id, $name, $element, $unitclass, $origin, $rarity, $url_img);
+                Logger::log('MODIFICATION', "Mise à jour du personnage ID $id : $name");
             } else {
                 $this->persoDAO->add($name, $element, $unitclass, $origin, $rarity, $url_img);
+                Logger::log('CREATION', "Ajout du nouveau personnage : $name");
             }
 
             header("Location: index.php?action=index");
@@ -81,6 +84,9 @@ class PersoController
         $this->persoDAO->delete($id);
 
         header("Location: index.php?message=" . urlencode("Personnage supprimé avec succès !"));
+
+        Logger::log('SUPPRESSION', "Personnage supprimé : $name (ID: $id)");
+
         exit;
     }
 }
