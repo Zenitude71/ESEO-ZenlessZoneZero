@@ -1,4 +1,3 @@
-<!-- Views/layout.php -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,6 +18,7 @@
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="index.php?action=add-perso">Ajouter un perso</a></li>
                 <li><a href="index.php?action=add-attribut">Ajouter un attribut</a></li>
+                <li><a href="index.php?action=logs">Logs</a></li>
             </ul>
         </nav>
     </div>

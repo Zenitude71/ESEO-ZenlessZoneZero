@@ -374,3 +374,38 @@ h1 {
         margin: 1rem;
     }
 }
+
+
+/* LOGS */
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #1e1e1e;
+    color: #fff;
+}
+
+.logs-table th, .logs-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.logs-table th {
+    background-color: #33B6FE;
+    color: black;
+}
+
+.btn-download {
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF5623;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.btn-download:hover {
+    opacity: 0.8;
+}

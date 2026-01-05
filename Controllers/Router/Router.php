@@ -11,6 +11,8 @@ use Controllers\Router\Route\RouteEditPerso;
 use Controllers\Router\Route\RouteIndex;
 use Controllers\Router\Route\RouteAddPerso;
 use Controllers\Router\Route\RouteAddElement;
+use Controllers\LogController;
+use Controllers\Router\Route\RouteLogs;
 use Exception;
 
 /**
@@ -43,7 +45,8 @@ class Router
         $this->ctrlList = [
             'main'     => new MainController(),
             'perso'    => new PersoController(),
-            'attribut' => new AttributController()
+            'attribut' => new AttributController(),
+            'logs'     => new LogController()
         ];
     }
 
@@ -59,6 +62,7 @@ class Router
             'edit-perso'        => new RouteEditPerso($this->ctrlList['perso']),
             'del-perso'         => new RouteDeletePerso($this->ctrlList['perso']),
             'add-attribut'      => new RouteAddAttribut($this->ctrlList['attribut']),
+            'logs'         => new RouteLogs($this->ctrlList['logs']),
         ];
     }
 
